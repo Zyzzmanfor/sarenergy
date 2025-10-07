@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAR Power — Портативні батареї серії PR</title>
+  <meta name="description" content="SAR Power — надійні портативні батареї з ємністю від 20000 до 80000 mAh. Швидка зарядка PD+QC, доставка по Україні, оплата при отриманні." />
+  <meta property="og:title" content="SAR Power — Power Bank PR-серія" />
+  <meta property="og:description" content="Power Bank від 20000 до 80000 mAh. PD20W + QC22.5W. Замовити по Україні з гарантією." />
+  <style>
+    :root {
+      --bg:#070707;--panel:#0f0f10;--muted:#9e9ea3;--fg:#f6f6f6;
+      --neon:#00ff73;--accent:rgba(0,255,115,0.06);--card:#0d0d0d;
+      --radius:14px;--maxw:1080px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+      background:linear-gradient(180deg,#050505,#0b0b0b 60%);
+      color:var(--fg);line-height:1.45;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+    .wrap{max-width:var(--maxw);margin:auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo-box{width:56px;height:56px;display:flex;align-items:center;justify-content:center}
+    .logo-box img{width:52px;height:52px;filter:drop-shadow(0 0 12px var(--neon));border-radius:8px;animation:neonPulse 2.6s ease-in-out infinite}
+    .brand-title .title{font-weight:800;color:var(--neon)}
+    .brand-title .sub{font-size:13px;color:var(--muted)}
+    nav{font-size:13px;color:var(--muted)}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:34px;align-items:center;margin-top:18px}
+    .hero-left{padding:12px}
+    h1{font-size:2.5rem;line-height:1.1}
+    .hook{color:var(--muted);font-size:1rem;margin-top:10px}
+    .price-row{display:flex;align-items:center;gap:14px;margin-top:18px}
+    .price{font-size:1.8rem;color:var(--neon);font-weight:800}
+    .oldprice{color:var(--muted);text-decoration:line-through;font-size:0.9rem}
+    .cta-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{background:var(--neon);color:#07100b;padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(0,255,115,0.12)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--fg);padding:10px 14px;border-radius:12px}
+    .features{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+    .fcard{flex:1 1 30%;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03);color:var(--muted);text-align:center;min-width:140px}
+    .fcard strong{color:var(--fg);display:block;margin-bottom:6px}
+    .preview{display:flex;align-items:center;justify-content:center}
+    .pcard{width:100%;max-width:340px;aspect-ratio:1/1;border-radius:20px;background:linear-gradient(180deg,#080808,#0f0f0f);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.02);box-shadow:0 20px 60px rgba(0,0,0,0.7)}
+    .pimg{width:80%;height:80%;background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 12px 30px rgba(0,255,115,0.12))}
+    .order-block{margin-top:22px;padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);background:linear-gradient(180deg,rgba(0,0,0,0.3),transparent)}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    input,select{width:100%;padding:12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--fg)}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .col{flex:1 1 100%;min-width:160px}
+    .note{font-size:13px;color:var(--muted);margin-top:8px}
+    .trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;color:var(--muted);justify-content:center}
+    .trust .item{padding:8px 12px;background:rgba(255,255,255,0.02);border-radius:10px}
+    footer{margin-top:44px;color:var(--muted);font-size:13px;text-align:center;padding-bottom:20px}
+    .accent-underline{position:relative;display:inline-block}
+    .accent-underline::after{content:"";position:absolute;left:0;bottom:-6px;height:8px;width:56%;background:linear-gradient(90deg,var(--neon),rgba(0,255,115,0.08));border-radius:6px}
+    .details-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:32px}
+    .detail-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.03);text-align:center}
+    .detail-card img{width:100%;border-radius:12px;margin-bottom:10px}
+    @keyframes neonPulse{0%,100%{filter:drop-shadow(0 0 6px var(--neon))}50%{filter:drop-shadow(0 0 18px var(--neon))}}
+
+    /* ---------- АДАПТИВ ---------- */
+    @media (max-width:960px){
+      .hero{grid-template-columns:1fr;gap:20px;text-align:center}
+      .hero-left{padding:0}
+      h1{font-size:2rem}
+      .price-row{justify-content:center}
+      .cta-row{justify-content:center}
+      .features{justify-content:center}
+      .pcard{margin:auto}
+    }
+    @media (max-width:480px){
+      h1{font-size:1.6rem}
+      .hook{font-size:0.95rem}
+      .price{font-size:1.6rem}
+      .btn,.btn-ghost{width:100%;text-align:center}
+      .order-block{padding:14px}
+      .trust .item{font-size:12px;padding:6px 10px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo-box"><img src="img/Лого1.png" alt="SAR Power"></div>
+        <div class="brand-title">
+          <div class="title">SAR Power</div>
+          <div class="sub">Офіційний магазин • Портативні батареї</div>
+        </div>
+      </div>
+      <nav>Доставка по Україні • Оплата при отриманні</nav>
+    </header>
+
+    <main class="hero" role="main">
+      <div class="hero-left">
+        <h1><span class="accent-underline">Заряджайся без меж</span><br>Power Bank SAR PR — від 20000 до 80000 mAh</h1>
+        <p class="hook">Для дому, подорожей і відключень. Надійна ємність, PD+QC швидка зарядка і гарантія 12 міс.</p>
+
+        <div class="price-row">
+          <div class="price" id="price">₴1599</div>
+          <div class="oldprice" id="oldprice">₴1799</div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn" id="toOrder">Замовити зараз</button>
+          <a class="btn-ghost" href="#details">Деталі</a>
+        </div>
+
+        <div class="features">
+          <div class="fcard"><strong>PD + QC</strong>Швидка зарядка 20W / 22.5W</div>
+          <div class="fcard"><strong>Type-C + USB</strong>Два пристрої одночасно</div>
+          <div class="fcard"><strong>Гарантія</strong>12 місяців</div>
+        </div>
+
+        <div class="order-block" id="orderBlock">
+          <form id="orderForm" autocomplete="off">
+            <div class="row">
+              <div class="col">
+                <label for="name">Ім'я</label>
+                <input id="name" name="name" placeholder="Іван" required>
+              </div>
+              <div class="col">
+                <label for="phone">Телефон</label>
+                <input id="phone" name="phone" placeholder="+380 66 123 45 67" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="capacity">Модель / Ємність</label>
+                <select id="capacity" name="capacity" required>
+                  <option value="20000">20000 mAh — ₴999</option>
+                  <option value="30000">30000 mAh — ₴1 199</option>
+                  <option value="40000">40000 mAh — ₴1 399</option>
+                  <option value="50000" selected>50000 mAh — ₴1 599</option>
+                  <option value="60000">60000 mAh — ₴1 799</option>
+                  <option value="80000">80000 mAh — ₴1 999</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="qty">Кількість</label>
+                <select id="qty" name="quantity"><option>1</option><option>2</option><option>3</option></select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <label for="city">Місто (Нова Пошта)</label>
+                <input id="city" name="city" placeholder="Львів" required>
+              </div>
+              <div class="col">
+                <label for="branch">Відділення або адреса</label>
+                <input id="branch" name="branch" placeholder="№ відділення" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn" style="width:100%;margin-top:12px">Замовити</button>
+            <div class="note">Менеджер зв’яжеться для підтвердження.</div>
+            <div class="trust">
+              <div class="item">Оплата при отриманні</div>
+              <div class="item">Доставка Новою Поштою</div>
+              <div class="item">12 міс гарантії</div>
+            </div>
+            <div id="msg" style="margin-top:12px;display:none;text-align:center"></div>
+          </form>
+        </div>
+      </div>
+
+      <div class="preview">
+        <div class="pcard"><div id="productImg" class="pimg" style="background-image:url('img/product.png')"></div></div>
+      </div>
+    </main>
+
+    <section id="details" style="margin-top:22px;padding:0 12px 8px 12px">
+      <h2>Серія PR — сила, адаптована під тебе</h2>
+      <p style="color:var(--muted);line-height:1.6;margin-top:6px">
+        Від компактної 20000 mAh до потужної 80000 mAh — обери свою. PD+QC зарядка, LED-індикатор, міцний корпус.
+      </p>
+
+      <div class="details-gallery">
+        <div class="detail-card">
+          <img src="img/flashlight.jpg" alt="Вбудований ліхтарик">
+          <p>Вбудований ліхтарик — натисни двічі кнопку живлення, і Power Bank стане джерелом світла.</p>
+        </div>
+        <div class="detail-card">
+          <img id="chargeInfoImg" src="img/charge-info-50000.jpg" alt="Ємність заряджання">
+          <p id="chargeInfoText">Power Bank 50000 mAh заряджає смартфон до <strong>10 разів</strong>, ноутбук — до <strong>2 разів</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 SAR Power — Енергія, яка не підводить</footer>
+  </div>
+
+  <script>
+    const prices={20000:999,30000:1199,40000:1399,50000:1599,60000:1799,80000:1999};
+    const priceEl=document.getElementById('price'),
+          oldEl=document.getElementById('oldprice'),
+          select=document.getElementById('capacity'),
+          chargeInfoImg=document.getElementById('chargeInfoImg'),
+          chargeInfoText=document.getElementById('chargeInfoText');
+
+    const modelInfo={
+      20000:{img:'img/charge-info-20000.jpg',text:"20000 mAh — смартфон до 4 разів, навушники — до 12."},
+      30000:{img:'img/charge-info-30000.jpg',text:"30000 mAh — смартфон 6 разів, планшет 1.5, ноутбук 1."},
+      40000:{img:'img/charge-info-40000.jpg',text:"40000 mAh — смартфон 8 разів, ноутбук 1.5, навушники 18."},
+      50000:{img:'img/charge-info-50000.jpg',text:"50000 mAh — смартфон 10 разів, ноутбук 2, навушники 20."},
+      60000:{img:'img/charge-info-60000.jpg',text:"60000 mAh — смартфон 12 разів, ноутбук 2.5, планшет 3."},
+      80000:{img:'img/charge-info-80000.jpg',text:"80000 mAh — смартфон 16 разів, ноутбук 3.5, дрон кілька разів."}
+    };
+
+    select.addEventListener('change',()=>{
+      const val=select.value,base=prices[val];
+      priceEl.textContent=`₴${base}`; oldEl.textContent=`₴${base+200}`;
+      chargeInfoImg.src=modelInfo[val].img;
+      chargeInfoText.textContent=modelInfo[val].text;
+    });
+
+    const FORM_ENDPOINT="https://formspree.io/f/mpwylbap";
+    const orderForm=document.getElementById('orderForm');
+    const msg=document.getElementById('msg');
+    const toOrder=document.getElementById('toOrder');
+    const orderBlock=document.getElementById('orderBlock');
+
+    toOrder.addEventListener('click',()=>{
+      orderBlock.scrollIntoView({behavior:'smooth',block:'center'});
+      document.getElementById('name').focus();
+    });
+
+    function validatePhone(v){return v.replace(/\D/g,'').length>=9;}
+    orderForm.addEventListener('submit',async e=>{
+      e.preventDefault();
+      const fd=new FormData(orderForm);
+      const name=fd.get('name').trim(),phone=fd.get('phone').trim();
+      if(!name||!validatePhone(phone)){
+        msg.style.display='block';msg.style.color='salmon';
+        msg.textContent='Перевірте правильність імені та номера телефону';return;
+      }
+      msg.style.display='block';msg.style.color='var(--muted)';
+      msg.textContent='Відправляємо замовлення...';
+      try{
+        const r=await fetch(FORM_ENDPOINT,{method:'POST',body:fd});
+        if(r.ok){msg.style.color='var(--neon)';msg.textContent='Дякуємо! Ми зв’яжемось для підтвердження.';orderForm.reset();}
+        else throw new Error();
+      }catch{msg.style.color='salmon';msg.textContent='Помилка відправлення. Спробуйте ще раз.';}
+    });
+  </script>
+</body>
+</html>
