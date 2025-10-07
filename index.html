@@ -231,42 +231,34 @@
     function validatePhone(v){return v.replace(/\D/g,'').length>=9;}
 
     orderForm.addEventListener('submit', async e => {
-      e.preventDefault();
-      const fd = new FormData(orderForm);
-      const name = fd.get('name').trim();
-      const phone = fd.get('phone').trim();
-      if(!name || !validatePhone(phone)){
-        msg.style.display='block';
-        msg.style.color='salmon';
-        msg.textContent='Перевірте правильність імені та номера телефону';
-        return;
-      }
+  e.preventDefault();
+  const fd = new FormData(orderForm);
+  const name = fd.get('name').trim();
+  const phone = fd.get('phone').trim();
+  
+  if(!name || !validatePhone(phone)){
+    msg.style.display='block';
+    msg.style.color='salmon';
+    msg.textContent='Перевірте правильність імені та номера телефону';
+    return;
+  }
 
-      msg.style.display='block';
-      msg.style.color='var(--muted)';
-      msg.textContent='Відправляємо замовлення...';
+  msg.style.display='block';
+  msg.style.color='var(--muted)';
+  msg.textContent='Відправляємо замовлення...';
 
-      try {
-        const r = await fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          body: fd,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if(r.status === 200 || r.status === 201 || r.status === 302){
-          msg.style.color='var(--neon)';
-          msg.textContent='Дякуємо! Ми зв’яжемось для підтвердження.';
-          orderForm.reset();
-        } else {
-          msg.style.color='salmon';
-          msg.textContent='Помилка відправлення. Спробуйте ще раз.';
-        }
-      } catch(err){
-        msg.style.color='salmon';
-        msg.textContent='Помилка відправлення. Спробуйте ще раз.';
-        console.error(err);
-      }
-    });
+  try {
+    await fetch(FORM_ENDPOINT, { method:'POST', body:fd, mode:'no-cors' });
+    // Навіть якщо fetch не поверне JSON, вважаємо успіх
+    msg.style.color='var(--neon)';
+    msg.textContent='Дякуємо! Ми зв’яжемось для підтвердження.';
+    orderForm.reset();
+  } catch(err){
+    msg.style.color='salmon';
+    msg.textContent='Помилка відправлення. Спробуйте ще раз.';
+    console.error(err);
+  }
+});
   </script>
 </body>
 </html>
