@@ -60,8 +60,6 @@
     .detail-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.03);text-align:center}
     .detail-card img{width:100%;border-radius:12px;margin-bottom:10px}
     @keyframes neonPulse{0%,100%{filter:drop-shadow(0 0 6px var(--neon))}50%{filter:drop-shadow(0 0 18px var(--neon))}}
-
-    /* ---------- АДАПТИВ ---------- */
     @media (max-width:960px){
       .hero{grid-template-columns:1fr;gap:20px;text-align:center}
       .hero-left{padding:0}
@@ -196,14 +194,14 @@
   </div>
 
   <script>
-    const prices={20000:999,30000:1199,40000:1399,50000:1599,60000:1799,80000:1999};
-    const priceEl=document.getElementById('price'),
-          oldEl=document.getElementById('oldprice'),
-          select=document.getElementById('capacity'),
-          chargeInfoImg=document.getElementById('chargeInfoImg'),
-          chargeInfoText=document.getElementById('chargeInfoText');
+    const prices = {20000:999,30000:1199,40000:1399,50000:1599,60000:1799,80000:1999};
+    const priceEl = document.getElementById('price'),
+          oldEl = document.getElementById('oldprice'),
+          select = document.getElementById('capacity'),
+          chargeInfoImg = document.getElementById('chargeInfoImg'),
+          chargeInfoText = document.getElementById('chargeInfoText');
 
-    const modelInfo={
+    const modelInfo = {
       20000:{img:'img/charge-info-20000.jpg',text:"20000 mAh — смартфон до 4 разів, навушники — до 12."},
       30000:{img:'img/charge-info-30000.jpg',text:"30000 mAh — смартфон 6 разів, планшет 1.5, ноутбук 1."},
       40000:{img:'img/charge-info-40000.jpg',text:"40000 mAh — смартфон 8 разів, ноутбук 1.5, навушники 18."},
@@ -213,17 +211,18 @@
     };
 
     select.addEventListener('change',()=>{
-      const val=select.value,base=prices[val];
-      priceEl.textContent=`₴${base}`; oldEl.textContent=`₴${base+200}`;
-      chargeInfoImg.src=modelInfo[val].img;
-      chargeInfoText.textContent=modelInfo[val].text;
+      const val = select.value, base = prices[val];
+      priceEl.textContent = `₴${base}`;
+      oldEl.textContent = `₴${base+200}`;
+      chargeInfoImg.src = modelInfo[val].img;
+      chargeInfoText.textContent = modelInfo[val].text;
     });
 
-    const FORM_ENDPOINT="https://formspree.io/f/mpwylbap";
-    const orderForm=document.getElementById('orderForm');
-    const msg=document.getElementById('msg');
-    const toOrder=document.getElementById('toOrder');
-    const orderBlock=document.getElementById('orderBlock');
+    const FORM_ENDPOINT = "https://formspree.io/f/mpwylbap";
+    const orderForm = document.getElementById('orderForm');
+    const msg = document.getElementById('msg');
+    const toOrder = document.getElementById('toOrder');
+    const orderBlock = document.getElementById('orderBlock');
 
     toOrder.addEventListener('click',()=>{
       orderBlock.scrollIntoView({behavior:'smooth',block:'center'});
@@ -231,21 +230,50 @@
     });
 
     function validatePhone(v){return v.replace(/\D/g,'').length>=9;}
-    orderForm.addEventListener('submit',async e=>{
+
+    orderForm.addEventListener('submit', async e=>{
       e.preventDefault();
-      const fd=new FormData(orderForm);
-      const name=fd.get('name').trim(),phone=fd.get('phone').trim();
-      if(!name||!validatePhone(phone)){
-        msg.style.display='block';msg.style.color='salmon';
-        msg.textContent='Перевірте правильність імені та номера телефону';return;
+      const fd = new FormData(orderForm);
+      const name = fd.get('name').trim(), phone = fd.get('phone').trim();
+
+      if(!name || !validatePhone(phone)){
+        msg.style.display='block';
+        msg.style.color='salmon';
+        msg.textContent='Перевірте правильність імені та номера телефону';
+        return;
       }
-      msg.style.display='block';msg.style.color='var(--muted)';
+
+      msg.style.display='block';
+      msg.style.color='var(--muted)';
       msg.textContent='Відправляємо замовлення...';
-      try{
-        const r=await fetch(FORM_ENDPOINT,{method:'POST',body:fd});
-        if(r.ok){msg.style.color='var(--neon)';msg.textContent='Дякуємо! Ми зв’яжемось для підтвердження.';orderForm.reset();}
-        else throw new Error();
-      }catch{msg.style.color='salmon';msg.textContent='Помилка відправлення. Спробуйте ще раз.';}
+
+      const submitButton = orderForm.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.style.opacity = 0.6;
+
+      try {
+        const response = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          body: fd,
+          headers: { 'Accept': 'application/json' }
+        });
+        const result = await response.json();
+
+        if(response.ok && result.ok !== false){
+          msg.style.color = 'var(--neon)';
+          msg.textContent = 'Дякуємо! Ми зв’яжемось для підтвердження.';
+          orderForm.reset();
+        } else {
+          throw new Error('Formspree помилка');
+        }
+      } catch(error){
+        msg.style.color='salmon';
+        msg.textContent='Помилка відправлення. Спробуйте ще раз.';
+        console.error(error);
+      } finally {
+        submitButton.disabled = false;
+        submitButton.style.opacity = 1;
+      }
     });
   </script>
 </body>
